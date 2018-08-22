@@ -1,28 +1,63 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  background-color: lightGray;
+  width: 100vw;
+  height: 100vh;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+  height: 8ex;
+  margin: 0 1em 1em 1em;
+  padding: 1em 0 0 0;
 }
 
 .App-title {
+  margin: 0;
+
   font-size: 1.5em;
+  color: black;
 }
 
-.App-intro {
-  font-size: large;
+.App-version {
+  color: darkGray;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+
+.wrapper {
+  margin: 0 1em 1em 0;
+  position: absolute;
+  top: 10ex;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.wrapper > * {
+  margin: 1em;
+  background-color: white;
+}
+@supports (display: flex) {
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+  }
+  .wrapper > * {
+    margin: 1em 0 0 1em;
+    border: solid 3px darkGray;
+  }
+
+  .ProviderCreate {
+    flex: 1 1 auto;
+  }
+
+  .ProviderList{
+    flex: 10 1 auto;
+  }
+}
+
+.ProviderCreate {
+  width: 15em;
+}
+
+.ProviderList{
+  width: 20em;
 }
