@@ -1,3 +1,34 @@
 .ProviderCreate {
     padding: 1em;
+    position: relative;   /* so children can be absolutely positioned */
+    overflow: scroll;
+}
+
+.ProviderCreate input {
+    width: 100%;
+}
+.ProviderCreate input:required {
+    border: 1px solid blue;
+}
+
+.ProviderCreate label {
+    display: block;
+    margin-top: 1em;
+}
+
+.ProviderCreate button {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+
+    font-size: 16pt;
+}
+
+
+/* for now, depend on a zero-height div being invisible */
+.Dictionary {
+    background-color: #ffdddd;
+}
+.Dictionary dt {
+    margin-top: 1ex;
 }
