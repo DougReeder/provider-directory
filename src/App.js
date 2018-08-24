@@ -12,7 +12,15 @@ class App extends Component {
                     <div className="App-version">v2.0</div>
                 </header>
                 <main className="wrapper">
-                    <ProviderCreate />
+                    <ProviderCreate {...{ specialtyOptions: [
+                        "Abdominal Radiology",
+                        "Addiction Psychiatry",
+                        "Biochemical Genetics",
+                        "Blood Banking - Transfusion Medicine",
+                        "Cardiothoracic Radiology",
+                        "Cardiovascular Disease",
+                        "Dermatology"
+                    ] }}/>
                     <ProviderList/>
                 </main>
             </div>

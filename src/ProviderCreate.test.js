@@ -19,6 +19,7 @@ describe("ProviderCreate", () => {
 
     beforeEach(() => {
         props = {
+            specialtyOptions: []
         };
         mountedProviderCreate = undefined;
     });
@@ -62,5 +63,18 @@ describe("ProviderCreate", () => {
         providerCreate().instance().saveBackToState({target: {name: 'email', value: 'foo@bar.com', checkValidity: mockCheckValidity}});
 
         expect(mockCheckValidity).toBeCalled();
+    });
+
+
+    describe("requires an array of specialtyOptions to be passed", () => {
+        beforeEach(() => {
+            props.specialtyOptions = ["Eschatology", "Hermanutics", "Astrogeology"];
+        });
+
+        it("should make each specialtyOption available as a datalist option", () => {
+            const providerC = providerCreate();
+            let options = providerC.find('option');
+            expect(options.length).toEqual(3);
+        })
     });
 });

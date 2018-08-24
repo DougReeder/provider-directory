@@ -71,12 +71,9 @@ class ProviderCreate extends Component {
                        onBlur={(evt) => this.updateFormErrors(evt)}
                 ></input>
                 <datalist id="specialtyList">
-                    <option value="Abdominal Radiology" />
-                    <option value="Addiction Psychiatry" />
-                    <option value="Biochemical Genetics" />
-                    <option value="Blood Banking - Transfusion Medicine" />
-                    <option value="Cardiothoracic Radiology" />
-                    <option value="Cardiovascular Disease" />
+                    {this.props.specialtyOptions.map(function(specialty, i){
+                        return <option value={specialty} key={i} />;
+                    })}
                 </datalist>
 
                 <label htmlFor="practiceName">Practice Name</label>
@@ -92,5 +89,10 @@ class ProviderCreate extends Component {
         )
     }
 }
+
+ProviderCreate.propTypes = {
+    specialtyOptions: PropTypes.arrayOf(String).isRequired,
+};
+
 
 export default ProviderCreate;
