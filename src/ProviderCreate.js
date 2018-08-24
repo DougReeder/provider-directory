@@ -21,14 +21,18 @@ class ProviderCreate extends Component {
         // console.log("ProviderCreate saveBackToState state:", this.state);
         const name = evt.target.name;
         const value = evt.target.value;
-        this.setState({[name]: value});
+        let formErrors = this.state.formErrors;
+        if (formErrors[name]) {
+            formErrors[name] = evt.target.checkValidity() ? "" : evt.target.validationMessage;
+        }
+        this.setState({[name]: value, formErrors: formErrors});
     }
 
     updateFormErrors(evt) {
         // console.log("ProviderCreate updateFormErrors state:", this.state);
         const name = evt.target.name;
         let formErrors = this.state.formErrors;
-        formErrors[name] = evt.target.checkValidity() ? "" : evt.target.validationMessage ;
+        formErrors[name] = evt.target.checkValidity() ? "" : evt.target.validationMessage;
         this.setState({formErrors: formErrors});
      }
 

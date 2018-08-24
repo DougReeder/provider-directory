@@ -5,8 +5,8 @@ const Dictionary = ({dictionary}) =>
         {Object.keys(dictionary).map((fieldName, i) => {
             if (dictionary[fieldName].length > 0) {
                 return (
-                    <React.Fragment>
-                        <dt key={i}>{fieldName}</dt>
+                    <React.Fragment key={i}>
+                        <dt>{fieldName}</dt>
                         <dd>{dictionary[fieldName]}</dd>
                     </React.Fragment>
                 )
