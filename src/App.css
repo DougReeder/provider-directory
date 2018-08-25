@@ -33,6 +33,7 @@
 .wrapper > * {
   margin: 1em;
   background-color: white;
+  overflow-y: scroll;
 }
 @supports (display: flex) {
   .wrapper {
