@@ -1,5 +1,11 @@
 # Provider Directory - a code exercise
 
+* works with windows narrower or shorter than ideal
+* fields that were valid when last validated are not revalidated until blur
+* fields that were invalid when last validated are revalidated after every keystroke
+* fields containing only spaces are not accepted for required fields
+
+
 ---
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

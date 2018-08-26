@@ -41,11 +41,11 @@ class ProviderCreate extends Component {
         if (form.checkValidity()) {
             evt.preventDefault();
             this.props.addProvider({
-                last_name: this.state.lastName,
-                first_name: this.state.firstName,
-                email_address: this.state.email,
-                specialty: this.state.specialty,
-                practice_name: this.state.practiceName
+                last_name: this.state.lastName.trim(),
+                first_name: this.state.firstName.trim(),
+                email_address: this.state.email.trim(),
+                specialty: this.state.specialty.trim(),
+                practice_name: this.state.practiceName.trim()
             });   // Doesn't clone state, because we don't want to pass formErrors
         } else {
             let inputs = form.querySelectorAll('input');
@@ -67,21 +67,21 @@ class ProviderCreate extends Component {
 
                 <form>
                 <label htmlFor="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName" maxLength="35" required
+                <input type="text" id="lastName" name="lastName" maxLength="35" required pattern=".*\S.*"
                        value={this.state.lastName}
                        onChange={(evt) => this.saveBackToState(evt)}
                        onBlur={(evt) => this.updateFormErrors(evt)}
                     ></input>
 
                 <label htmlFor="firstName">First Name</label>
-                <input type="text" id="firstName" name="firstName" maxLength="35" required
+                <input type="text" id="firstName" name="firstName" maxLength="35" required pattern=".*\S.*"
                        value={this.state.firstName}
                        onChange={(evt) => this.saveBackToState(evt)}
                        onBlur={(evt) => this.updateFormErrors(evt)}
                 ></input>
 
                 <label htmlFor="email">Email Address</label>
-                <input type="email" id="email" name="email" maxLength="254" required
+                <input type="email" id="email" name="email" maxLength="254"  required pattern=".*\S.*"
                        value={this.state.email}
                        onChange={(evt) => this.saveBackToState(evt)}
                        onBlur={(evt) => this.updateFormErrors(evt)}
