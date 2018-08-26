@@ -36,6 +36,28 @@ class ProviderCreate extends Component {
         this.setState({formErrors: formErrors});
      }
 
+    addProvider(evt) {
+        const form = evt.target.form;
+        if (form.checkValidity()) {
+            evt.preventDefault();
+            this.props.addProvider({
+                last_name: this.state.lastName,
+                first_name: this.state.firstName,
+                email_address: this.state.email,
+                specialty: this.state.specialty,
+                practice_name: this.state.practiceName
+            });   // Doesn't clone state, because we don't want to pass formErrors
+        } else {
+            let inputs = form.querySelectorAll('input');
+            let formErrors = this.state.formErrors;
+            inputs.forEach((input) => {
+                formErrors[input.name] = input.checkValidity() ? "" : input.validationMessage;
+            });
+            this.setState({formErrors: formErrors});
+            console.warn("form not valid", formErrors);
+        }
+    }
+
     render() {
         return (
             <div className="ProviderCreate">
@@ -43,6 +65,7 @@ class ProviderCreate extends Component {
 
                 <Dictionary dictionary={this.state.formErrors} />
 
+                <form>
                 <label htmlFor="lastName">Last Name</label>
                 <input type="text" id="lastName" name="lastName" maxLength="35" required
                        value={this.state.lastName}
@@ -83,8 +106,8 @@ class ProviderCreate extends Component {
                        onBlur={(evt) => this.updateFormErrors(evt)}
                 ></input>
 
-                <button name="addProvider" type="submit">Submit</button>
-
+                <button name="addProvider" type="submit" onClick={(evt) => this.addProvider(evt)}>Submit</button>
+                </form>
             </div>
         )
     }
@@ -92,6 +115,7 @@ class ProviderCreate extends Component {
 
 ProviderCreate.propTypes = {
     specialtyOptions: PropTypes.arrayOf(String).isRequired,
+    addProvider: PropTypes.func
 };
 
 

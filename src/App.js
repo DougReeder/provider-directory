@@ -49,6 +49,19 @@ const defaultProviders = [
 ];
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            providers: [...defaultProviders]
+        };
+    }
+
+    addProvider(provider) {
+        // console.log("app addProvider:", provider);
+        let providers = [provider, ...this.state.providers];
+        this.setState({providers: providers});
+    }
+
     render() {
         return (
             <div className="App">
@@ -57,17 +70,20 @@ class App extends Component {
                     <div className="App-version">v2.0</div>
                 </header>
                 <main className="wrapper">
-                    <ProviderCreate {...{ specialtyOptions: [
-                        "Abdominal Radiology",
-                        "Addiction Psychiatry",
-                        "Biochemical Genetics",
-                        "Blood Banking - Transfusion Medicine",
-                        "Cardiothoracic Radiology",
-                        "Cardiovascular Disease",
-                        "Dermatology"
-                    ] }}/>
+                    <ProviderCreate {...{
+                        specialtyOptions: [
+                            "Abdominal Radiology",
+                            "Addiction Psychiatry",
+                            "Biochemical Genetics",
+                            "Blood Banking - Transfusion Medicine",
+                            "Cardiothoracic Radiology",
+                            "Cardiovascular Disease",
+                            "Dermatology"
+                        ],
+                        addProvider: this.addProvider.bind(this)
+                    }}/>
                     <ProviderList {... {
-                        providers: defaultProviders
+                        providers: this.state.providers
                     }}/>
                 </main>
             </div>
