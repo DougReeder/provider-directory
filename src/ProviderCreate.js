@@ -3,6 +3,15 @@ import PropTypes from 'prop-types';
 import Dictionary from './Dictionary';
 import './ProviderCreate.css';
 
+
+const displayName = {
+    lastName: "Last Name",
+    firstName: "First Name",
+    email: "Email Address",
+    specialty: "Specialty",
+    practiceName: "Practice Name"
+};
+
 class ProviderCreate extends Component {
     constructor(props) {
         super(props);
@@ -22,17 +31,16 @@ class ProviderCreate extends Component {
         const name = evt.target.name;
         const value = evt.target.value;
         let formErrors = this.state.formErrors;
-        if (formErrors[name]) {
-            formErrors[name] = evt.target.checkValidity() ? "" : evt.target.validationMessage;
+        if (formErrors[displayName[name]]) {
+            this.validateField(evt.target);
         }
         this.setState({[name]: value, formErrors: formErrors});
     }
 
     updateFormErrors(evt) {
         // console.log("ProviderCreate updateFormErrors state:", this.state);
-        const name = evt.target.name;
+        this.validateField(evt.target);
         let formErrors = this.state.formErrors;
-        formErrors[name] = evt.target.checkValidity() ? "" : evt.target.validationMessage;
         this.setState({formErrors: formErrors});
      }
 
@@ -49,13 +57,18 @@ class ProviderCreate extends Component {
             });   // Doesn't clone state, because we don't want to pass formErrors
         } else {
             let inputs = form.querySelectorAll('input');
-            let formErrors = this.state.formErrors;
             inputs.forEach((input) => {
-                formErrors[input.name] = input.checkValidity() ? "" : input.validationMessage;
+                this.validateField(input);
             });
+            let formErrors = this.state.formErrors;
             this.setState({formErrors: formErrors});
             console.warn("form not valid", formErrors);
         }
+    }
+
+    validateField(input) {
+        let formErrors = this.state.formErrors;
+        formErrors[displayName[input.name]] = input.checkValidity() ? "" : input.validationMessage;
     }
 
     render() {

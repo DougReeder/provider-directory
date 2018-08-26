@@ -55,8 +55,8 @@ describe("ProviderCreate", () => {
 
     it("on each keystroke, does validate email if it was invalid on the last validation", () => {
         const providerC = providerCreate();
-        providerCreate().setState({formErrors: {email: "must contain @"}});
-        expect(providerC.state().formErrors).toEqual({email: "must contain @"});
+        providerCreate().setState({formErrors: {'Email Address': "must contain @"}});
+        expect(providerC.state().formErrors).toEqual({'Email Address': "must contain @"});
         const mockCheckValidity = jest.fn();
         mockCheckValidity.mockReturnValue(true);
 
