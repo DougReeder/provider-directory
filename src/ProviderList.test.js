@@ -19,6 +19,7 @@ describe("ProviderList", () => {
     beforeEach(() => {
         props = {
             providers: [],
+            changeSort: jest.fn(),
             removeProvider: jest.fn(),
         };
         mountedProviderList = undefined;
@@ -49,6 +50,7 @@ describe("ProviderList", () => {
                         "practice_name": "Juday Family Practice"
                     }
                 ],
+                changeSort: jest.fn(),
                 removeProvider: jest.fn(),
             };
         });
@@ -68,6 +70,12 @@ describe("ProviderList", () => {
             expect(providerDivs.at(0).text()).toMatch(/mwitting@updox.com/);
             expect(providerDivs.at(0).text()).toMatch(/Witting’s Well Kids Pediatrics/);
         })
+    });
+
+
+    it("offers options to sort by any of the 5 fields, ascending or descending", () => {
+        const options = providerList().find("option");
+        expect(options.length).toEqual(5*2);
     });
 
 });

@@ -3,7 +3,8 @@
 * works with windows narrower or shorter than ideal
 * fields that were valid when last validated are not revalidated until blur
 * fields that were invalid when last validated are revalidated after every keystroke
-* fields containing only spaces are not accepted for required fields
+* required fields must contain at least one non-blank character
+* The "Sort by" control should be refactored from ProviderList into App
 
 
 ---
