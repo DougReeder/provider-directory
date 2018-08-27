@@ -62,6 +62,16 @@ class App extends Component {
         this.setState({providers: providers});
     }
 
+    /** selectedProviders: array of indexes, in order from low to high */
+    removeProvider(selectedProviders) {
+        // console.log("app removeProvider", selectedProviders);
+        const providers = this.state.providers;
+        for (let i=selectedProviders.length-1; i>=0; --i) {
+            providers.splice(selectedProviders[i], 1);
+        }
+        this.setState({providers: providers});
+    }
+
     render() {
         return (
             <div className="App">
@@ -83,7 +93,8 @@ class App extends Component {
                         addProvider: this.addProvider.bind(this)
                     }}/>
                     <ProviderList {... {
-                        providers: this.state.providers
+                        providers: this.state.providers,
+                        removeProvider: this.removeProvider.bind(this)
                     }}/>
                 </main>
             </div>

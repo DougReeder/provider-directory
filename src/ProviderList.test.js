@@ -18,7 +18,8 @@ describe("ProviderList", () => {
 
     beforeEach(() => {
         props = {
-            providers: []
+            providers: [],
+            removeProvider: jest.fn(),
         };
         mountedProviderList = undefined;
     });
@@ -47,7 +48,8 @@ describe("ProviderList", () => {
                         "specialty": "General Medicine",
                         "practice_name": "Juday Family Practice"
                     }
-                ]
+                ],
+                removeProvider: jest.fn(),
             };
         });
 

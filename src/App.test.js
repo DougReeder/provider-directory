@@ -22,7 +22,7 @@ describe("App", () => {
         mountedApp = undefined;
     });
 
-    test("on addProvider, adds provider to beginning of array", () => {
+    it("on addProvider, adds provider to beginning of array", () => {
         const app = constructApp();
         expect(app.state().providers.length).toEqual(6);
 
@@ -36,6 +36,16 @@ describe("App", () => {
 
         expect(app.state().providers.length).toEqual(7);
         expect(app.state().providers[0].last_name).toEqual("Doe");
+    });
+
+    it("on removeProvider, removes selected providers from array", () => {
+        const app = constructApp();
+        expect(app.state().providers.length).toEqual(6);
+
+        // if provider 1 is removed before 5, this test will fail
+        app.instance().removeProvider(["1", "5"]);
+
+        expect(app.state().providers.length).toEqual(4);
     });
 });
 

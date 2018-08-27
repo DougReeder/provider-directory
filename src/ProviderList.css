@@ -17,9 +17,6 @@ div.provider:nth-child(even) {
 .flex-row > * {
     /* styling for old browsers goes here */
 }
-.flex-row > *:last-child {
-    text-align: right;
-}
 
 @supports (display: flex) {
     .flex-row {
@@ -31,10 +28,28 @@ div.provider:nth-child(even) {
     }
 }
 
+.delete-box {
+    width: 2em;
+    flex: 0 1 auto;
+}
+
 .provider-name {
     font-weight: bold;
 }
 
 .secondary-info {
     font-size: smaller;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+
+.ProviderList button {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+
+    font-size: 16pt;
 }
