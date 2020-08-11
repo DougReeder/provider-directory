@@ -7,7 +7,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "3.0.1",
+    "react-scripts": "^3.4.1",
     "react-test-renderer": "^16.5.2"
   },
   "scripts": {
